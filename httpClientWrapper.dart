@@ -235,3 +235,40 @@ class APIHttpCall {
 }
 
 
+-----------------
+ how to use?
+    
+ APIHttpCall.performGetApi(_handleResponse);
+
+ _handleResponse(bool timeout, User user) {
+    if (mounted) {
+      _dismissFloatingIndicator();
+
+      if (timeout) {
+        this._showSnackIndicator("Timeout,please try again");
+
+        // _showDialog("timeout");
+
+      } else {
+        if (user != null) {
+          //go to next page
+          Navigator.of(context).pushReplacementNamed("/drawer");
+
+          this._showSnackIndicator("succeed");
+
+          // _showDialog("succeed");
+        } else {
+          this._showSnackIndicator("Something went wrong,please try again");
+
+          // _showDialog("error");
+        }
+      }
+    }
+  }
+
+
+
+    
+    
+
+
